@@ -23,10 +23,13 @@ $("#IDButtonLogin").click(function(){
 				.then(customer => {
 					if(customer.rows[0].Customer.includes("Storci")){
 						// Carica la pagina.
+						localStorage.setItem('global_customer', 'Storci')
 						window.location.href = "./01_Customers.html"
 					}else{
 						// Carica la pagina.
 						//window.location.href = "./02_Dashboard.html?entityName=" + customer.rows[0].entityName
+						localStorage.setItem('global_customer', customer.rows[0].entityName)
+						localStorage.setItem('global_selected_customer', customer.rows[0].entityName)
 						window.location.href = "./00_main_page.html?entityName=" + customer.rows[0].entityName
 					}
 				})
