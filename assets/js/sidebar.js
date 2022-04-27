@@ -9,9 +9,19 @@ import * as fb from "./Global/Firebase/firebase_auth_module.js"
 let entityName = localStorage.getItem('global_entityName')
 try{
   let customer = localStorage.getItem('global_selected_customer')
-  customer = customer.replace(/_/g, ' ')
+  if(customer.includes('Canossa')){
+    customer = 'Pastificio 1'
+  } else if(customer.includes('El_Wattania')){
+    customer = 'Pastificio 2'
+  } else if(customer.includes('Pasta_E_Aromi')){
+    customer = 'Pastificio 3'
+  } else {
+    customer = 'STORCI'
+  }
+
   $('#id-customer-name').text(customer)
 }catch(e){}
+
 if(localStorage.getItem('global_customer').includes("Storci")){
   $('#id-nav-customers-list').removeClass('d-none')
 }
