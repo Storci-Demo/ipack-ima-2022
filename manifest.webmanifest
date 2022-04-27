@@ -1,22 +1,7 @@
 {
-  "short_name": "Storci IoT",
+  "short_name": "Ipack-Ima 2022",
   "name": "Storci IoT Monitoring System",
   "icons": [
-    {
-      "src": "./icon-192x192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "./icon-256x256.png",
-      "type": "image/png",
-      "sizes": "256x256"
-    },
-    {
-      "src": "./icon-384x384.png",
-      "type": "image/png",
-      "sizes": "384x384"
-    },
     {
       "src": "./icon-512x512.png",
       "type": "image/png",
@@ -33,14 +18,14 @@
       "short_name": "Today",
       "description": "View weather information for today",
       "url": "/today?source=pwa",
-      "icons": [{ "src": "./icon-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "./icon-512x512.png", "sizes": "512x512" }]
     },
     {
       "name": "How's weather tomorrow?",
       "short_name": "Tomorrow",
       "description": "View weather information for tomorrow",
       "url": "/tomorrow?source=pwa",
-      "icons": [{ "src": "./icon-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "./icon-512x512.png", "sizes": "512x512" }]
     }
   ],
   "description": "Machines monitoring system"
