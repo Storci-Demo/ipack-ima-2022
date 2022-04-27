@@ -6,6 +6,7 @@
         <meta name="description" content=""/> 
         <link rel="icon" href="./assets/img/icon_round_storci.svg" type="image/x-icon"/> 
         <title>Lista Clienti</title>         
+        <link rel="manifest" href="./manifest.webmanifest"/> 
         <!-- PRELOAD -->         
         <link rel="preload" as="script" href="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"/> 
         <link rel="preload" as="image" href="./assets/img/Loghi/Antiche_Tradizioni_Di_Gragnano.svg"/> 
@@ -40,7 +41,7 @@
         <script src="./assets/js/sidebar.js" type="module"></script>         
         <script defer src="./assets/js/01_Customers.js" type="module"></script>         
         <script src="./firebase-messaging-sw.js" type="module"></script>         
-        <script defer src="./assets/js/Global/Firebase/firebase_messaging_init.js" type="module"></script>
+        <script defer src="./assets/js/Global/Firebase/firebase_messaging_init.js" type="module"></script>         
     </head>     
     <body> 
         <script> $('body').addClass('d-none')</script>         
@@ -192,7 +193,7 @@
 </div>                             
                         </div>                         
                     </div>                     
-                    <div class="gy-3 pg-empty-placeholder row row-cols-1 row-cols-lg-4 row-cols-md-2 row-cols-sm-1" id="IDRowDisconnected" data-pg-name="row-customer-disconnected" title="Clienti Disconnessi"></div>
+                    <div class="gy-3 pg-empty-placeholder row row-cols-1 row-cols-lg-4 row-cols-md-2 row-cols-sm-1" id="IDRowDisconnected" data-pg-name="row-customer-disconnected" title="Clienti Disconnessi"></div>                     
                 </main>                 
             </div>             
         </div>         
