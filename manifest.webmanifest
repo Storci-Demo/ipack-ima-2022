@@ -10,7 +10,7 @@
   ],
   "start_url": "./index.html",
   "background_color": "#004071",
-  "display": "browser",
+  "display": "standalone",
   "theme_color": "#004071",
   "shortcuts": [
     {
