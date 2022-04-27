@@ -1,51 +1,47 @@
-<!DOCTYPE html> 
-<html lang="en" style="min-height: 100% !important; align-items: center; display: flex; justify-content: center; background-color: #004071;"> 
-    <head> 
-        <meta charset="utf-8"/> 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/> 
-        <meta name="description" content=""/> 
-        <meta name="author" content=""/> 
-        <title>Blank Template for Bootstrap</title>         
-        <!-- Custom styles for this template -->         
-        <link href="assets/css/dashboard.css" rel="stylesheet"/> 
-        <link href="style.css" rel="stylesheet"/> 
-        <link href="assets/css/storci-styles.css" rel="stylesheet"/> 
-        <!-- AM4CORE CHART -->         
-        <script defer src="https://cdn.amcharts.com/lib/4/core.js"></script>         
-        <script defer src="https://cdn.amcharts.com/lib/4/charts.js"></script>         
-        <script defer src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>         
-        <script defer src="https://cdn.amcharts.com/lib/4/themes/dark.js"></script>         
-        <script defer src="//cdn.amcharts.com/lib/4/plugins/rangeSelector.js"></script>         
-        <!-- The core Firebase JS SDK is always required and must be listed first -->         
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>         
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>         
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>         
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>         
-        <script> 
-        var firebaseConfig = {
-            apiKey: "AIzaSyB6L_2pDhDz1RXHA5ZA8g9hsU9e4EOHGvU",
-            authDomain: "storci-thingworx-ui.firebaseapp.com",
-            projectId: "storci-thingworx-ui",
-            storageBucket: "storci-thingworx-ui.appspot.com",
-            messagingSenderId: "1040048598489",
-            appId: "1:1040048598489:web:81d20e1907671b25aabdc8",
-            measurementId: "G-8KW275718B"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-        </script>         
+<!DOCTYPE html>
+<html lang="en" style="min-height: 100% !important; align-items: center; display: flex; justify-content: center; background-color: #004071;">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <link rel="icon" href="./assets/img/icon_round_storci.svg" type="image/x-icon"/>
+        <title>Index</title>
+        <!-- PRELOAD -->
+        <link rel="preload" as="script" href="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"/>
+        <!-- JQUERY -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="./assets/css/dashboard.css" media="print" onload="this.media='all'"/>
+        <link rel="stylesheet" href="./assets/css/storci-styles.css" media="print" onload="this.media='all'"/>
+        <link rel="stylesheet" href="./style.css" media="print" onload="this.media='all'"/>
+        <!-- AM4CORE CHART -->
+        <!--
+        <script defer src="https://cdn.amcharts.com/lib/4/core.js"></script>
+        <script defer src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+        <script defer src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+        <script defer src="https://cdn.amcharts.com/lib/4/themes/dark.js"></script>
+        <script defer src="//cdn.amcharts.com/lib/4/plugins/rangeSelector.js"></script>
+        -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js" type="module"></script>
+        <!-- <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js" type="module"></script>  -->
+        <script defer src="./assets/js/Global/Firebase/firebase_config.js"></script>
         <link href="bootstrap_theme/bootstrap.css" rel="stylesheet" type="text/css"/>
-    </head>     
-    <body> 
+        <!-- CUSTOM SCRIPT -->
+        <script defer src="./assets/js/index.js" type="module"> </script>
+    </head>
+    <body>
         <!-- Bootstrap core JavaScript
-    ================================================== -->         
-        <!-- Placed at the end of the document so the pages load faster -->         
-        <img src="assets/img/Storci_Logo_191x73_1_.svg"/> 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>         
-        <script src="./assets/js/popper.min.js"></script>         
-        <script src="./assets/js/bootstrap.min.js"></script>         
-        <script src="./assets/js/index.js" type="module"> </script>         
-    </body>     
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <img src="assets/img/Storci_Logo_191x73_1_.svg"/>
+        <!-- <script src="./assets/js/popper.min.js"></script>-->
+        <!-- <script src="./assets/js/bootstrap.min.js"></script>-->
+    </body>
 </html>

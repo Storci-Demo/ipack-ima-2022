@@ -1,5 +1,6 @@
 // Carica le funzioni globali
 import * as tw from "../Thingworx/thingworx_api_module.js"
+import * as tw_chart from "../Thingworx/thingworx_api_module_with_chart.js"
 import * as am from "../amchart/amchart_functions.js"
 
 // Funzione che ritorna l'anno il mese e il giorno
@@ -60,7 +61,7 @@ function historyDryerProduction(chart, query, entityName){
 	// Recupera la lista delle produzioni con il time range impostato di default
 	// Da data Attuale a data attuale - 14 giorni.
 	// Per default viene visualizzata la prima produzione dell'elenco. (l'ultima produzione effettuata in ordine cronologico)
-	tw.getDryerHistoryProduction('#IDHistoryTableBody', entityName, timeStartHistory, timeEndHistory, chart, query)
+	tw_chart.getDryerHistoryProduction('#IDHistoryTableBody', entityName, timeStartHistory, timeEndHistory, chart, query)
 	// Listener sul cambio di valore della data di inizio produzione
 	// Al cambio di valore viene eseguita la funzione seguente.
 	// Viene recuperata di nuovo la lista delle produzioni con il range time aggiornato
@@ -72,7 +73,7 @@ function historyDryerProduction(chart, query, entityName){
 		let timeEndHistory   = new Date($('#IDTimeEnd').val())
 	  // Recupera la lista delle produzioni
 	  // Per default viene visualizzata la prima produzione dell'elenco. (l'ultima produzione effettuata in ordine cronologico)
-		tw.getDryerHistoryProduction('#IDHistoryTableBody', entityName, timeStartHistory, timeEndHistory, chart, query)
+		tw_chart.getDryerHistoryProduction('#IDHistoryTableBody', entityName, timeStartHistory, timeEndHistory, chart, query)
 	});
 	// Listener sul cambio di valore della data di fine produzione
 	// Al cambio di valore viene eseguita la funzione seguente.
@@ -85,8 +86,22 @@ function historyDryerProduction(chart, query, entityName){
 		let timeEndHistory   = new Date($(this).val())
 	  // Recupera la lista delle produzioni
 	  // Per default viene visualizzata la prima produzione dell'elenco. (l'ultima produzione effettuata in ordine cronologico)
-		tw.getDryerHistoryProduction('#IDHistoryTableBody', entityName, timeStartHistory, timeEndHistory, chart, query)
+		tw_chart.getDryerHistoryProduction('#IDHistoryTableBody', entityName, timeStartHistory, timeEndHistory, chart, query)
 	});
+
+	// Abilita onclick sulla card
+	$('tr').click(() => {
+		console.log('click')
+		// Aggiunge la classe table-primary alla riga seleziona e la rimuove dalle altre righe
+		$(this).addClass('table-primary').siblings().removeClass('table-primary')
+		// Definisce la query da inviare a influxdb
+		let subquery = query.replaceAll('{1}', timestampStart).replaceAll('{2}', timestampEnd)
+		// Recupera i dati da influxdb e li visualizza sul grafico
+		am.setChartData(chart, subquery, '.lds-dual-ring.history-production-trend')
+		// Nasconde l'icona del caricamento alla fine delle funzione + 1s dopo
+		setTimeout(function() {	$('.lds-dual-ring.history-production-trend').hide() }, 1000)
+	})
+
 }
 
 
@@ -127,7 +142,7 @@ function historyLineProduction(chart, query, entityName){
 	// Recupera la lista delle produzioni con il time range impostato di default
 	// Da data Attuale a data attuale - 14 giorni.
 	// Per default viene visualizzata la prima produzione dell'elenco. (l'ultima produzione effettuata in ordine cronologico)
-	tw.getLineHistoryProduction('#IDHistoryTableBody', entityName, timeStartHistory, timeEndHistory, chart, query)
+	tw_chart.getLineHistoryProduction('#IDHistoryTableBody', entityName, timeStartHistory, timeEndHistory, chart, query)
 	// Listener sul cambio di valore della data di inizio produzione
 	// Al cambio di valore viene eseguita la funzione seguente.
 	// Viene recuperata di nuovo la lista delle produzioni con il range time aggiornato
@@ -139,7 +154,7 @@ function historyLineProduction(chart, query, entityName){
 		let timeEndHistory   = new Date($('#IDTimeEnd').val())
 	  // Recupera la lista delle produzioni
 	  // Per default viene visualizzata la prima produzione dell'elenco. (l'ultima produzione effettuata in ordine cronologico)
-		tw.getLineHistoryProduction('#IDHistoryTableBody', entityName, timeStartHistory, timeEndHistory, chart, query)
+		tw_chart.getLineHistoryProduction('#IDHistoryTableBody', entityName, timeStartHistory, timeEndHistory, chart, query)
 	});
 	// Listener sul cambio di valore della data di fine produzione
 	// Al cambio di valore viene eseguita la funzione seguente.
@@ -152,7 +167,7 @@ function historyLineProduction(chart, query, entityName){
 		let timeEndHistory   = new Date($(this).val())
 	  // Recupera la lista delle produzioni
 	  // Per default viene visualizzata la prima produzione dell'elenco. (l'ultima produzione effettuata in ordine cronologico)
-		tw.getLineHistoryProduction('#IDHistoryTableBody', entityName, timeStartHistory, timeEndHistory, chart, query)
+		tw_chart.getLineHistoryProduction('#IDHistoryTableBody', entityName, timeStartHistory, timeEndHistory, chart, query)
 	});
 }
 // La funzione recupera i dati da thingworx e li visualizza sul grafico

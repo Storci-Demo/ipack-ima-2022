@@ -79,13 +79,18 @@ tw.service_01_getDryersGeneralInfo(entityName)
 
       setDryersTrend(chart, query)
     })
+  }else{
+    $('#IDdivDryers').addClass('d-none')
   }
+})
+.catch(e => {
+  $('#IDdivLinee').addClass('d-none')
 })
 
 // Recupera i dati generali delle linee installate dal cliente
 tw.service_02_getLinesGeneralInfo(entityName)
 .then(res => {
-  if(JSON.stringify(res) !== '{}'){
+  if(res.array.length > 0){
     res.array.forEach((item, i) => {
       createDivLine('#IDdivLinee', item.entityName)
       setLineCardsValue(entityName)
@@ -128,7 +133,13 @@ tw.service_02_getLinesGeneralInfo(entityName)
         am.setChartData(chart, query, '')
       })
     })
+  }else{
+    $('#IDdivLinee').addClass('d-none')
   }
+})
+.catch(e => {
+  console.warn(e)
+  $('#IDdivLinee').addClass('d-none')
 })
 
 // ******************** FUNCTION ********************

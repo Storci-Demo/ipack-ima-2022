@@ -32,75 +32,86 @@ function createCard(customerList){
 		// Toglie le prime due stringhe 'Storci' e 'Thing'.
 		// es. EntityName: Storci.Thing.Antiche_Tradizioni_Di_Gragnano
 		let customerName = el.name.split('.')[2]
-		// Recupera l'immagine del cliente
-		let image = "./assets/img/Loghi/" + customerName + "." + "svg"
-		// Carica un'immagine base nel caso l'immagine del cliente non venga trovata
-		let onerror = "javascript:this.src='./assets/img/insert_photo_black_48dp.svg'"
-		// Genera l'html della card
-		let card =	'	<div id="' + id + 'Column" class="col col-customer">'
-		card  +=	'	  <div id="' + id + '" class="card card-hover ripple h-100 card-border">'
-		card 	+=	'		<div class="card-body">'
-		card 	+=	'			<div class="row">'
-		card 	+=	'				<div class="col text-center"><img id="' + id + 'Image" src="' + image + '" alt="logo" onerror="' + onerror + '" style="opacity: 0.75;height: 75px;width: 200px;" /></div>'
-		card 	+=	'				<div class="w-100" style="padding: 12px;"></div>'
-		// RIGA NOME CLIENTE
-		card 	+=	'				<div class="col">'
-		card 	+=	'					<h5 id="' + id + 'CustomerName" class="card-title-' + i + '" style="color: var(--bs-heading-high-emphasis);">' + customerName.replace(/_/g, " ") + '</h5>'
-		card 	+=	'				</div>'
-		card 	+=	'				<div class="w-100" style="padding: 6px;"></div>'
-		card 	+=	'				<div class="col-7 align-self-center">'
-		// RIGA STATO CONNESSIONE
-		card 	+=	'					<h6 class="card-subtitle card-label-' + i + '" style="margin: 0px;color: var(--bs-heading-medium-emphasis);font-size: 14px;min-height: 20px;">Stato Connessione</h6>'
-		card 	+=	'				</div>'
-		card 	+=	'				<div class="col-5 align-self-center">'
-		card 	+=	'					<h6 id="' + id + 'ConnectionState" class="card-value-' + i + '" style="margin: 0px;font-size: 14px;min-height: 20px;color: var(--bs-heading-high-emphasis);">Non Connesso</h6>'
-		card 	+=	'				</div>'
-		card 	+=	'				<div class="w-100" style="padding: 6px;"></div>'
-		// RIGA LINEA
-		card 	+=	'				<div class="col-7 align-self-center line_' + id + '">'
-		card 	+=	'					<h6 class="card-subtitle card-label-' + i + '" style="margin: 0px;color: var(--bs-heading-medium-emphasis);font-size: 14px;min-height: 20px;">Linea</h6>'
-		card 	+=	'				</div>'
-		card 	+=	'				<div class="col-5 align-self-center line_' + id + '"">'
-		card 	+=	'					<h6 id="' + id + 'StatusLine" class="card-value-' + i + '" style="margin: 0px;font-size: 14px;min-height: 20px;color: var(--bs-heading-high-emphasis);">undefined</h6>'
-		card 	+=	'				</div>'
-		card 	+=	'				<div class="w-100 line_' + id + '" style="padding: 6px;"></div>'
-		// RIGA CELLA
-		card 	+=	'				<div class="col-7 align-self-center dryer_' + id + '">'
-		card 	+=	'					<h6 class="card-subtitle card-label-' + i + '" style="margin: 0px;color: var(--bs-heading-medium-emphasis);font-size: 14px;min-height: 20px;">Celle</h6>'
-		card 	+=	'				</div>'
-		card 	+=	'				<div class="col-5 align-self-center dryer_' + id + '">'
-		card 	+=	'					<h6 id="' + id + 'StatusCella" class="card-value-' + i + '" style="margin: 0px;font-size: 14px;min-height: 20px;color: var(--bs-heading-high-emphasis);">undefined<br /></h6>'
-		card 	+=	'				</div>'
-		card 	+=	'				<div class="w-100 dryer_' + id + '" style="padding: 6px;"></div>'
-		// RIGA ALLARMI
-		card 	+=	'				<div class="col-7 align-self-center">'
-		card 	+=	'					<h6 class="card-subtitle card-label-' + i + '" style="margin: 0px;color: var(--bs-heading-medium-emphasis);font-size: 14px;min-height: 20px;">Allarmi</h6>'
-		card 	+=	'				</div>'
-		card 	+=	'				<div class="col-5 align-self-center">'
-		card 	+=	'					<h6 id="' + id + 'Allarmi" class="card-value-' + i + '" style="margin: 0px;font-size: 14px;min-height: 20px;color: var(--bs-heading-high-emphasis);">undefined<br /></h6>'
-		card 	+=	'				</div>'
-		card 	+=	'				<div class="w-100" style="padding: 6px;"></div>'
-		card 	+=	'			</div>'
-		card 	+=	'		</div>'
-		card 	+=	'	</div>'
-		card 	+=	'</div>'
+    let name
+    if(customerName.includes('Canossa') || customerName.includes('El_Wattania') || customerName.includes('Pasta_E_Aromi') ){
+    if(customerName.includes('Canossa')){
+      name = 'Pastificio 1'
+    } else if(customerName.includes('El_Wattania')){
+      name = 'Pastificio 2'
+    } else if(customerName.includes('Pasta_E_Aromi')){
+      name = 'Pastificio 3'
+    }
 
-		if(el.isConnected){
-			// Aggiunge la card alla lista
-			$("#IDRowConnected").append(card)
-		}else{
-			// Aggiunge la card alla lista
-			$("#IDRowDisconnected").append(card)
-		}
+  		// Recupera l'immagine del cliente
+  		let image = "./assets/img/insert_photo_black_48dp.svg"
+  		// Carica un'immagine base nel caso l'immagine del cliente non venga trovata
+  		let onerror = "javascript:this.src='./assets/img/insert_photo_black_48dp.svg'"
+  		// Genera l'html della card
+  		let card =	'	<div id="' + id + 'Column" class="col col-customer">'
+  		card  +=	'	  <div id="' + id + '" class="card card-hover ripple h-100 card-border">'
+  		card 	+=	'		<div class="card-body">'
+  		card 	+=	'			<div class="row">'
+  		card 	+=	'				<div class="col text-center"><img id="' + id + 'Image" src="' + image + '" alt="logo" onerror="' + onerror + '" style="opacity: 0.75;height: 75px;width: 200px;" /></div>'
+  		card 	+=	'				<div class="w-100" style="padding: 12px;"></div>'
+  		// RIGA NOME CLIENTE
+  		card 	+=	'				<div class="col">'
+  		card 	+=	'					<h5 id="' + id + 'CustomerName" class="card-title-' + i + '" style="color: var(--bs-heading-high-emphasis);">' + name + '</h5>'
+  		card 	+=	'				</div>'
+  		card 	+=	'				<div class="w-100" style="padding: 6px;"></div>'
+  		card 	+=	'				<div class="col-7 align-self-center">'
+  		// RIGA STATO CONNESSIONE
+  		card 	+=	'					<h6 class="card-subtitle card-label-' + i + '" style="margin: 0px;color: var(--bs-heading-medium-emphasis);font-size: 14px;min-height: 20px;">Stato Connessione</h6>'
+  		card 	+=	'				</div>'
+  		card 	+=	'				<div class="col-5 align-self-center">'
+  		card 	+=	'					<h6 id="' + id + 'ConnectionState" class="card-value-' + i + '" style="margin: 0px;font-size: 14px;min-height: 20px;color: var(--bs-heading-high-emphasis);">Non Connesso</h6>'
+  		card 	+=	'				</div>'
+  		card 	+=	'				<div class="w-100" style="padding: 6px;"></div>'
+  		// RIGA LINEA
+  		card 	+=	'				<div class="col-7 align-self-center line_' + id + '">'
+  		card 	+=	'					<h6 class="card-subtitle card-label-' + i + '" style="margin: 0px;color: var(--bs-heading-medium-emphasis);font-size: 14px;min-height: 20px;">Linea</h6>'
+  		card 	+=	'				</div>'
+  		card 	+=	'				<div class="col-5 align-self-center line_' + id + '"">'
+  		card 	+=	'					<h6 id="' + id + 'StatusLine" class="card-value-' + i + '" style="margin: 0px;font-size: 14px;min-height: 20px;color: var(--bs-heading-high-emphasis);">undefined</h6>'
+  		card 	+=	'				</div>'
+  		card 	+=	'				<div class="w-100 line_' + id + '" style="padding: 6px;"></div>'
+  		// RIGA CELLA
+  		card 	+=	'				<div class="col-7 align-self-center dryer_' + id + '">'
+  		card 	+=	'					<h6 class="card-subtitle card-label-' + i + '" style="margin: 0px;color: var(--bs-heading-medium-emphasis);font-size: 14px;min-height: 20px;">Celle</h6>'
+  		card 	+=	'				</div>'
+  		card 	+=	'				<div class="col-5 align-self-center dryer_' + id + '">'
+  		card 	+=	'					<h6 id="' + id + 'StatusCella" class="card-value-' + i + '" style="margin: 0px;font-size: 14px;min-height: 20px;color: var(--bs-heading-high-emphasis);">undefined<br /></h6>'
+  		card 	+=	'				</div>'
+  		card 	+=	'				<div class="w-100 dryer_' + id + '" style="padding: 6px;"></div>'
+  		// RIGA ALLARMI
+  		card 	+=	'				<div class="col-7 align-self-center">'
+  		card 	+=	'					<h6 class="card-subtitle card-label-' + i + '" style="margin: 0px;color: var(--bs-heading-medium-emphasis);font-size: 14px;min-height: 20px;">Allarmi</h6>'
+  		card 	+=	'				</div>'
+  		card 	+=	'				<div class="col-5 align-self-center">'
+  		card 	+=	'					<h6 id="' + id + 'Allarmi" class="card-value-' + i + '" style="margin: 0px;font-size: 14px;min-height: 20px;color: var(--bs-heading-high-emphasis);">undefined<br /></h6>'
+  		card 	+=	'				</div>'
+  		card 	+=	'				<div class="w-100" style="padding: 6px;"></div>'
+  		card 	+=	'			</div>'
+  		card 	+=	'		</div>'
+  		card 	+=	'	</div>'
+  		card 	+=	'</div>'
 
-		// Abilita onclick sulla card
-		document.getElementById(id).onclick = function(){
-			// salvo i dati nella local storage
-			localStorage.setItem('global_selected_customer', customerName)
-			localStorage.setItem('global_entityName', el.name)
-			// Carica la pagina.
-			window.location.href = "./02_Dashboard.html?entityName=" + el.name
-		}
+  		if(el.isConnected){
+  			// Aggiunge la card alla lista
+  			$("#IDRowConnected").append(card)
+  		}else{
+  			// Aggiunge la card alla lista
+  			$("#IDRowDisconnected").append(card)
+  		}
+
+  		// Abilita onclick sulla card
+  		document.getElementById(id).onclick = function(){
+  			// salvo i dati nella local storage
+  			localStorage.setItem('global_selected_customer', customerName)
+  			localStorage.setItem('global_entityName', el.name)
+  			// Carica la pagina.
+  			window.location.href = "./02_Dashboard.html?entityName=" + el.name
+  		}
+    }
 	})
 }
 

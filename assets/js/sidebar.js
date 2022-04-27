@@ -5,13 +5,27 @@ import * as fb from "./Global/Firebase/firebase_auth_module.js"
 // recupera il nome dell'entity (selezionata, se utente storci)
 // il nome dell'entity permette di recuperare le macchine presenti
 // per un determinato cliente e visualizzarle nella sidebar.
+
 let entityName = localStorage.getItem('global_entityName')
-let customer = localStorage.getItem('global_selected_customer')
-customer = customer.replace(/_/g, ' ')
-$('#id-customer-name').text(customer)
+try{
+  let customer = localStorage.getItem('global_selected_customer')
+  if(customer.includes('Canossa')){
+    customer = 'Pastificio 1'
+  } else if(customer.includes('El_Wattania')){
+    customer = 'Pastificio 2'
+  } else if(customer.includes('Pasta_E_Aromi')){
+    customer = 'Pastificio 3'
+  } else {
+    customer = 'STORCI'
+  }
+
+  $('#id-customer-name').text(customer)
+}catch(e){}
+
 if(localStorage.getItem('global_customer').includes("Storci")){
   $('#id-nav-customers-list').removeClass('d-none')
 }
+
 // Recupera l'url della pagina visualizzata
 // Effettua uno split dell'url recuperato dividendo la stringa tramite lo /
 // recupera il nome della pagina
@@ -57,7 +71,8 @@ tw.service_90_sidebar(entityName)
         $(idAccordion).removeClass('d-none')
         // controlla che la pagina in visualizzazione sia una pagina delle celle (30_*, 31_*, 32_*)
         // se la pagina corrisponde, allora viene aperto il menù delle celle.
-        if(pageName.includes('dryer-')){
+
+        if(pageName.includes('_dryer')){
           $(idBtnAccordion).attr('aria-expanded', 'true')
           $(idBtnAccordion).removeClass('collapsed')
           $(idCollapsePanel).addClass('show')
@@ -67,6 +82,7 @@ tw.service_90_sidebar(entityName)
         // se la pagina della dashboard o dello storico
         if(pageName == href_dashboard){ $(nav_dashboard_link).addClass('active') }
         if(pageName == href_history)  { $(nav_history_link).addClass('active') }
+
 
         // Visualizza le celle presenti dal cliente.
         // Nella sidebar sono presenti 16 celle, nascoste tramite la classe d-none
@@ -128,6 +144,8 @@ tw.service_90_sidebar(entityName)
           let span_status           = id_nav_dashboard_line + 'div a :last-child'
           $(span_status).text(res.lines[i-1].status)
 
+          getListMachine(res.lines[i-1].entityName)
+
           // Visualizza il menu delle celle
           $(idAccordion).removeClass('d-none')
           // controlla che la pagina in visualizzazione sia una pagina delle celle (30_*, 31_*, 32_*)
@@ -144,6 +162,7 @@ tw.service_90_sidebar(entityName)
   $('body').removeClass('d-none')
 })
   .catch(err => console.error(err))
+
 
 refreshStatus(entityName)
 // imposta il servizio refreshStatus in loop
@@ -172,15 +191,27 @@ function refreshStatus(entityName){
   .catch(err => console.error(err))
 }
 
-if(localStorage.getItem('pageName')){
-  $('#iframe_id').attr('src', localStorage.getItem('pageName'))
-}
 
-$('a').on('click', function() {
-  console.log(this.href)
-  $('#iframe_id').attr('src', this.href)
-  localStorage.setItem('pageName', this.href)
-  $('a').removeClass('active')
-  $(this).addClass('active')
-  return false
-})
+// Funzione che recupera le macchine presenti nella linea
+// Effettua una chiamata a tw per il recupero del nome delle macchine,
+// poi inserisce le macchine all'interno di una lista.
+function getListMachine(entityName){
+	tw.getCustomerLineMachine(entityName)
+	.then(list => {
+    list.rows.forEach((item, i) => {
+  		switch(item.name){
+  			case 'Impasto'					 : $('#id-nav-dough-line-1').removeClass('d-none'); break
+  			case "Stenditrice"			 : $('#id-nav-spreader-line-1').removeClass('d-none'); break
+  			case "Pasta Instant"		 : $('#id-nav-pasta-instant-line-1').removeClass('d-none'); break
+  			case "Avanzamento Telai" : $('#id-nav-tray-feeder-line-1').removeClass('d-none'); break
+  			case "Robot Deimpilatore": $('#id-nav-destacker-line-1').removeClass('d-none'); break
+  			case "Omnidryer"				 : $('#id-nav-omnidryer-line-1').removeClass('d-none'); break
+  			case "Pressa"						 : $('#id-nav-extruder-line-1').removeClass('d-none'); break
+  			case "Impilatore"			   : $('#id-nav-stacker-line-1').removeClass('d-none'); break
+  			case "Trabatto"				   : $('#id-nav-predryer-line-1').removeClass('d-none'); break
+        case "Nidi_Lasagna" 	   : $('#id-nav-nests_lasagna-line-1').removeClass('d-none'); break
+  		}
+  	})
+  })
+	.catch(error => console.error(error))
+}

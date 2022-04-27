@@ -2,18 +2,22 @@
 <html lang="en"> 
     <head> 
         <meta charset="utf-8"/> 
-        <meta name="viewport" content="width=device-width, initial-scale=1"/> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/> 
         <meta name="description" content=""/> 
-        <title>Signin Template · Bootstrap v5.0</title>         
+        <meta name="author" content=""/> 
+        <link rel="icon" href="./assets/img/icon_round_storci.svg" type="image/x-icon"/> 
+        <title>Sign In</title>         
+        <!-- GOOGLE ICON -->         
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet"/> 
         <!-- JQUERY -->         
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>         
         <!-- Bootstrap core -->         
-        <link defer href="bootstrap_theme/bootstrap.css" rel="stylesheet" type="text/css"/> 
+        <link href="bootstrap_theme/bootstrap.css" rel="stylesheet" type="text/css"/> 
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>         
         <!-- Custom styles for this template -->         
         <link href="sign-in.css" rel="stylesheet"/> 
         <link href="assets/css/storci-styles.css" rel="stylesheet"/> 
-        <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet"/> 
         <!-- AM4CORE CHART -->         
         <script defer src="https://cdn.amcharts.com/lib/4/core.js"></script>         
         <script defer src="https://cdn.amcharts.com/lib/4/charts.js"></script>         
@@ -21,29 +25,16 @@
         <script defer src="https://cdn.amcharts.com/lib/4/themes/dark.js"></script>         
         <script defer src="//cdn.amcharts.com/lib/4/plugins/rangeSelector.js"></script>         
         <!-- The core Firebase JS SDK is always required and must be listed first -->         
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>         
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>         
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>         
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>         
-        <script>
-        var firebaseConfig = {
-            apiKey: "AIzaSyB6L_2pDhDz1RXHA5ZA8g9hsU9e4EOHGvU",
-            authDomain: "storci-thingworx-ui.firebaseapp.com",
-            projectId: "storci-thingworx-ui",
-            storageBucket: "storci-thingworx-ui.appspot.com",
-            messagingSenderId: "1040048598489",
-            appId: "1:1040048598489:web:81d20e1907671b25aabdc8",
-            measurementId: "G-8KW275718B"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-        </script>         
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>         
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>         
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>         
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>         
+        <script defer src="./assets/js/Global/Firebase/firebase_config.js"></script>         
+        <!-- CUSTOM SCRIPT -->         
+        <script defer src="./assets/js/90_signIn.js" type="module"></script>         
     </head>     
     <body class="text-center" style="background-image: url('assets/img/Background%20(1).svg'); background-size: contain; background-position: right top; background-repeat: no-repeat;"> 
-        <div class="container" style="
-/* background: #fff */
-opacity: 0.8;"> 
+        <div class="container" style="/* background: #fff */opacity: 0.8;"> 
             <div class="row d-flex" style="justify-content: center;"> 
                 <div class="bg-white card col-md-6 mb-5 p-3 rounded shadow-lg w-auto"> 
                     <div class="card-body"> 
@@ -60,16 +51,13 @@ opacity: 0.8;">
                             <input type="password" class="form-control" id="IDPassword" placeholder="Enter Password" aria-describedby="emailHelp"/> 
                         </div>                         
                         <div class="mb-3 form-check" style="display: inline-block;"> 
-                            <input type="checkbox" class="form-check-input" id="formInput6"/> 
+                            <input type="checkbox" class="form-check-input" id="showPassword"/> 
                             <label class="form-check-label" for="formInput6">Check me out</label>                             
-                        </div>                         
-                    </form>                     <a href="91_passwordRecovery.html" class="text-contrast">forgot Password</a> <a href="92_signUp.html" class="text-contrast">Not registered? Create an account</a> 
-                    <button id="IDButtonLogin" class="btn btn-contrast btn-primary">Sign In</button>                     
+                        </div><span style="display: block;" id="IDErrorMessage" class="text-danger">This is a span.</span> 
+                    </form>                     <a href="91_passwordRecovery.html" class="p-2 text-contrast">forgot Password</a> <a href="92_signUp.html" class="p-2 text-contrast">Not registered? Create an account</a> 
+                    <button id="IDButtonLogin" class="btn btn-contrast btn-primary mb-2 mt-2">Sign In</button>                     
                 </div>                 
             </div>             
         </div>         
-        <script src="assets/js/90_login.js" type="module"></script>         
-        <script src="assets/js/popper.min.js"></script>         
-        <script src="bootstrap/js/bootstrap.min.js"></script>         
     </body>     
 </html>

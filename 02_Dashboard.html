@@ -1,56 +1,188 @@
 <!DOCTYPE html> 
-<html lang="en" class="bg-white"> 
-    <head> 
+<html lang="en" class="bg-white" data-pgc-master="00_master.html"> 
+    <head data-pgc-field="head"> 
         <meta charset="utf-8"/> 
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/> 
         <meta name="description" content=""/> 
         <meta name="author" content=""/> 
         <link rel="icon" href="./assets/img/icon_round_storci.svg" type="image/x-icon"/> 
-        <title>Dashboard Cella</title>         
-        <!-- GOOGLE ICON -->         
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet"/> 
+        <title>Dashboard</title>         
+        <!-- PRELOAD -->         
+        <link rel="preload" as="script" href="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"/> 
+        <link rel="preload" as="script" href="https://cdn.amcharts.com/lib/4/core.js"/> 
+        <link rel="preload" as="script" href="https://cdn.amcharts.com/lib/4/charts.js"/> 
+        <link rel="preload" as="script" href="https://cdn.amcharts.com/lib/4/themes/animated.js"/> 
+        <link rel="preload" as="script" href="https://cdn.amcharts.com/lib/4/themes/dark.js"/> 
+        <link rel="preload" as="script" href="//cdn.amcharts.com/lib/4/plugins/rangeSelector.js"/> 
+        <!-- GOOGLE STYLE -->         
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"/> 
         <!-- JQUERY -->         
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>         
         <!-- Bootstrap core -->         
         <link href="bootstrap_theme/bootstrap.css" rel="stylesheet" type="text/css"/> 
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>         
         <!-- Custom styles for this template -->         
-        <link href="assets/css/dashboard.css" rel="stylesheet"/> 
-        <link href="assets/css/storci-styles.css" rel="stylesheet"/> 
+        <link rel="stylesheet" href="assets/css/dashboard.css" media="print" onload="this.media='all'"/> 
+        <link rel="stylesheet" href="assets/css/storci-styles.css" media="print" onload="this.media='all'"/> 
         <!-- AM4CORE CHART -->         
         <script defer src="https://cdn.amcharts.com/lib/4/core.js"></script>         
         <script defer src="https://cdn.amcharts.com/lib/4/charts.js"></script>         
         <script defer src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>         
         <script defer src="https://cdn.amcharts.com/lib/4/themes/dark.js"></script>         
         <script defer src="//cdn.amcharts.com/lib/4/plugins/rangeSelector.js"></script>         
+        <!-- The core Firebase JS SDK is always required and must be listed first -->         
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>         
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>         
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>         
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js" type="module"></script>         
+        <!-- <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js" type="module"></script>  -->         
+        <script defer src="./assets/js/Global/Firebase/firebase_config.js"></script>         
         <!-- CUSTOM SCRIPT -->         
         <script src="./assets/js/sidebar.js" type="module"></script>         
         <script defer src="assets/js/02_Dashboard.js" type="module"></script>         
-        <!-- The core Firebase JS SDK is always required and must be listed first -->         
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>         
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>         
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>         
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>         
-        <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-messaging.js" type="module"></script>         
-        <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js" type="module"></script>         
-        <script>
-            var firebaseConfig = {
-                apiKey: "AIzaSyB6L_2pDhDz1RXHA5ZA8g9hsU9e4EOHGvU",
-                authDomain: "storci-thingworx-ui.firebaseapp.com",
-                projectId: "storci-thingworx-ui",
-                storageBucket: "storci-thingworx-ui.appspot.com",
-                messagingSenderId: "1040048598489",
-                appId: "1:1040048598489:web:81d20e1907671b25aabdc8",
-                measurementId: "G-8KW275718B"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            firebase.analytics();
-        </script>
+        <script defer src="./assets/js/pageNotification.js" type="module"></script>
     </head>     
-    <body class="pb-lg-5 pe-lg-4 ps-lg-4">
-        <div class="mb-5 me-0 ms-0 pg-empty-placeholder row" id="IDdivLinee"></div>
-        <div class="mb-5 me-0 ms-0 pg-empty-placeholder row" id="IDdivDryers"></div>         
+    <body> 
+        <script> $('body').addClass('d-none')</script>         
+        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"> <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"><span id="id-customer-name">Storci</span></a> <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"></a> 
+            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> 
+            </button>             
+        </header>         
+        <div class="container-fluid"> 
+            <div class="row"> 
+                <nav id="sidebarMenu" class="bg-light col-lg-2 col-md-3 collapse d-md-block sidebar"> 
+                    <div class="position-sticky pt-3"> 
+                        <ul class="nav flex-column" id="IDNavPrimary"> 
+                            <li class="d-none nav-item" id="id-nav-customers-list"> <a class="align-items-center d-flex nav-link" aria-current="page" href="01_Customers.html"> <span class="material-icons-outlined">group</span><span class="ms-3">Lista Clienti</span> </a> 
+                            </li>                             
+                            <li class="nav-item"> <a class="align-items-center d-flex nav-link" aria-current="page" href="02_Dashboard.html" id="id-nav-dashboard"><span class="material-icons-outlined">insert_chart</span><span class="ms-3">Dashboard</span>&nbsp;</a> 
+                            </li>                             
+                        </ul>                         
+                        <h6 class="align-items-center d-flex justify-content-between mb-1 mt-4 px-3 sidebar-heading text-secondary"> <span>macchine</span><span class="material-icons-outlined">settings</span> </h6> 
+                        <ul class="nav flex-column" id="IDNavSecondary"> 
+                            <div class="accordion" id="panels1"> 
+                                <div class="accordion-item bg-light border-bottom-0 border-top-0 d-none" id="id-accordion-dryers"> 
+                                    <h2 class="accordion-header bg-light" id="id-header-accordion-dryers"> <button class="accordion-button bg-light collapsed pb-2 pe-3 ps-3 pt-2 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#id-collapse-panel-dryers" aria-controls="id-collapse-panel-dryers" id="id-btn-accordion-dryers" aria-expanded="false">Celle</button> </h2> 
+                                    <div id="id-collapse-panel-dryers" class="accordion-collapse collapse ps-3" aria-labelledby="collapse2" data-bs-parent="#panels1"> 
+                                        <li class="nav-item" data-pg-name="dashboard" id="id-nav-dashboard-dryer"> <a class="align-items-center d-flex nav-link" aria-current="page" href="30_dryers_general_dashboard.html"><span class="material-icons-outlined">analytics</span><span class="ms-3">Dashboard</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="nav-item text-light" data-pg-name="history" id="id-nav-history-dryer"> <a class="align-items-center d-flex nav-link" aria-current="page" href="31_dryers_history.html"><span class="material-icons-outlined">history</span><span class="ms-3">Storico</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-1" id="id-nav-dryer-1"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 1</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-2" id="id-nav-dryer-2"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 2</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-3" id="id-nav-dryer-3"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 3</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-4" id="id-nav-dryer-4"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 4</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-5" id="id-nav-dryer-5"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 5</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-6" id="id-nav-dryer-6"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 6</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-7" id="id-nav-dryer-7"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 7</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-8" id="id-nav-dryer-8"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 8</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-9" id="id-nav-dryer-9"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 9</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-10" id="id-nav-dryer-10"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 10</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-11" id="id-nav-dryer-11"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 11</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-12" id="id-nav-dryer-12"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 12</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-13" id="id-nav-dryer-13"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 13</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-14" id="id-nav-dryer-14"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 14</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-15" id="id-nav-dryer-15"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 15</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item text-light" data-pg-name="dryer-16" id="id-nav-dryer-16"> <a class="nav-link" aria-current="page" href="03_Dryers.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">crop_portrait</span> <span class="ms-3">Cella 16</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                    </div>                                     
+                                </div>                                 
+                                <div class="accordion-item bg-light border-bottom-0 border-top-0 d-none" id="id-accordion-line-1"> 
+                                    <h2 class="accordion-header bg-light" id="id-header-accordion-line-1"> <button class="accordion-button bg-light collapsed pb-2 pe-3 ps-3 pt-2 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#id-collapse-panel-line-1" aria-expanded="false" aria-controls="id-collapse-panel-line-1" id="id-btn-accordion-line-1">Linea 01</button></h2> 
+                                    <div id="id-collapse-panel-line-1" class="accordion-collapse collapse ps-3" aria-labelledby="collapse2" data-bs-parent="#panels1"> 
+                                        <li class="nav-item" data-pg-name="dashboard" id="id-nav-dashboard-line-1"> <a class="nav-link" aria-current="page" href="40_line_dashboard.html" id="nav-line01-dashboard"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">analytics</span> <span class="ms-3">Dashboard</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="nav-item" data-pg-name="history" id="id-nav-history-line-1"> <a class="align-items-center d-flex nav-link" aria-current="page" href="41_line_history.html"><span class="material-icons-outlined">history</span><span class="ms-3">Storico</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item" data-pg-name="dough" id="id-nav-dough-line-1"> <a class="align-items-center d-flex nav-link" aria-current="page" href="45_line_dough.html"><span class="material-icons-outlined">grain</span><span class="ms-3">Gruppo Impasto</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item" data-pg-name="extruder" id="id-nav-extruder-line-1"> <a class="align-items-center d-flex nav-link" aria-current="page" href="46_line_extruder.html"><span class="material-icons-outlined">group_work</span><span class="ms-3">Estrusore</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item" data-pg-name="tray-feeder" id="id-nav-tray-feeder-line-1"> <a class="align-items-center d-flex nav-link" aria-current="page" href="47_line_tray_feeder.html"><span class="material-icons-outlined">group_work</span><span class="ms-3">Avanzamento Telai</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item" data-pg-name="destacker" id="id-nav-destacker-line-1"> <a class="align-items-center d-flex nav-link" aria-current="page" href="48_line_destacker.html"><span class="material-icons-outlined">group_work</span><span class="ms-3">Deimpilatore</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item" data-pg-name="spreader" id="id-nav-spreader-line-1"> <a class="align-items-center d-flex nav-link" aria-current="page" href="49_line_spreader.html"><span class="material-icons-outlined">group_work</span><span class="ms-3">Stenditrice</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item" data-pg-name="nests_lasagna" id="id-nav-nests_lasagna-line-1"> <a class="align-items-center d-flex nav-link" aria-current="page" href="50_line_nests_lasagna.html"><span class="material-icons-outlined">group_work</span><span class="ms-3">Nidi Lasagna</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item" data-pg-name="pasta_instant" id="id-nav-pasta-instant-line-1"> <a class="align-items-center d-flex nav-link" aria-current="page" href="54_line_pasta_instant.html"><span class="material-icons-outlined">group_work</span><span class="ms-3">Pasta Instant</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item" data-pg-name="predryer" id="id-nav-predryer-line-1"> <a class="align-items-center d-flex nav-link" aria-current="page" href="51_line_predryer.html"><span class="material-icons-outlined">group_work</span><span class="ms-3">Trabatto</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item" data-pg-name="omnidryer" id="id-nav-omnidryer-line-1"> <a class="align-items-center d-flex nav-link" aria-current="page" href="52_line_omnidryer.html"><span class="material-icons-outlined">group_work</span><span class="ms-3">Omnidryer</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="d-none nav-item" data-pg-name="stacker" id="id-nav-stacker-line-1"> <a class="align-items-center d-flex nav-link" aria-current="page" href="53_line_stacker.html"><span class="material-icons-outlined">group_work</span><span class="ms-3">Impilatore</span>&nbsp;</a> 
+                                        </li>                                         
+                                    </div>                                     
+                                </div>                                 
+                                <div class="accordion-item bg-light border-bottom-0 border-top-0 d-none" id="id-accordion-line-2"> 
+                                    <h2 class="accordion-header bg-light" id="id-header-accordion-line-2"> <button class="accordion-button bg-light collapsed pb-2 pe-3 ps-3 pt-2 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#id-collapse-panel-line-2" aria-expanded="false" aria-controls="id-collapse-panel-line-2" id="id-btn-accordion-line-2">Linea 02</button></h2> 
+                                    <div id="id-collapse-panel-line-2" class="accordion-collapse collapse ps-3" aria-labelledby="collapse2" data-bs-parent="#panels1"> 
+                                        <li class="nav-item text-light" id="id-nav-dashboard-line-" data-pg-name="dashboard"> <a class="nav-link" aria-current="page" href="40_line_dashboard.html"><div class="align-items-center d-inline-flex"> <span class="material-icons-outlined">analytics</span> <span class="ms-3">Dashboard</span> 
+                                                </div><span class="float-end ms-1 text-success">Running</span>&nbsp;</a> 
+                                        </li>                                         
+                                        <li class="nav-item text-light" data-pg-name="history" id="id-nav-history-line-2"> <a class="align-items-center d-flex nav-link" aria-current="page" href="41_line_history.html"><span class="material-icons-outlined">history</span><span class="ms-3">Storico</span>&nbsp;</a> 
+                                        </li>                                         
+                                    </div>                                     
+                                </div>                                 
+                            </div>                             
+                        </ul>                         
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"> <span>reports</span> <span class="material-icons-outlined">summarize</span></h6> 
+                        <ul class="nav flex-column mb-2"> 
+                            <li class="nav-item"> <a class="align-items-center d-flex nav-link" href="#"> <span class="material-icons-outlined">notifications</span> <span class="ms-3">Allarmi</span> </a> 
+                            </li>                             
+                            <li class="nav-item"> <a class="align-items-center d-flex nav-link" href="#"> <span class="material-icons-outlined">history</span> <span class="ms-3">Storico Allarmi</span> </a> 
+                            </li>                             
+                        </ul>                         
+                        <h6 class="align-items-center d-flex justify-content-between mb-1 mt-4 px-3 sidebar-heading text-secondary"> <span id="id-username">Utente</span><span class="material-icons-outlined md-24">person</span> </h6> 
+                        <ul class="flex-column mb-2 nav"> 
+                            <li class="nav-item"> <a class="align-items-center d-flex nav-link" href="90_login.html" id="id-user-login"> <span class="material-icons-outlined">login</span> <span class="ms-3">Login</span> </a> 
+                            </li>                             
+                            <li class="nav-item"> <a class="align-items-center d-flex nav-link" href="#" id="id-user-logout"><span class="material-icons-outlined">logout</span><span class="ms-3">Logout</span> </a> 
+                            </li>                             
+                        </ul>                         
+                    </div>                     
+                </nav>                 
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="id-column-master" data-pgc-field="id-column-master"> 
+                    <div class="mb-5 pg-empty-placeholder row" id="IDdivLinee"></div>                     
+                    <div class="mb-5 pg-empty-placeholder row" id="IDdivDryers"></div>
+                </main>                 
+            </div>             
+        </div>         
     </body>     
 </html>
