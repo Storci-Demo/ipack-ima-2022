@@ -12,6 +12,7 @@ lang.getLanguage()
 // Recupera la lista dei clienti presenti da tw
 tw.getCustomersList()
 .then(customerList => {
+	console.log(customerList)
     // Genera html della card del cliente
     createCard(customerList)
     // Esegue la funzione dopo la creazione delle card.
@@ -60,12 +61,23 @@ tw.service_80_githubAPI(url)
 function createCard(customerList){
 	// Effettua un ciclo per ogni cliente trovato
 	customerList.rows.forEach((el, i) => {
+		if(el.name =='Storci.Thing.Lucano' || el.name == "Storci.Thing.Canossa"){
 		// Genera un id per la singola card
 		let id = "IDCard" + i
 		// Recupera dall'entityName il nome del customerInfo
 		// Toglie le prime due stringhe 'Storci' e 'Thing'.
 		// es. EntityName: Storci.Thing.Antiche_Tradizioni_Di_Gragnano
-		let customerName = el.name.split('.')[2]
+		let customerName = ['Customer 1', 'Customer 2']
+		switch(customerName){
+			case 0:
+				'cliente 1';
+				break;
+			case 1:
+				'cliente 2';
+				break;
+
+		}
+		
 		console.log(customerName)
 		// Recupera l'immagine del cliente
 		let image = "./assets/img/Loghi/" + customerName + "." + "svg"
@@ -76,14 +88,17 @@ function createCard(customerList){
 		card  +=	'	  <div id="' + id + '" class="card card-hover ripple h-100 card-border">'
 		card 	+=	'		<div class="card-body">'
 		card 	+=	'			<div class="row">'
-		card 	+=	'				<div class="col text-center"><img id="' + id + 'Image" src="' + image + '" alt="logo" onerror="' + onerror + '" style="opacity: 0.75;height: 75px;width: 200px;" /></div>'
+		card 	+=	'				<div class="col text-center"><img id="' + id + 'Image" src="' + image + '" alt="logo" onerror="' + onerror + '" style="opacity: 0.75;height: 75px;width: 200px;display:none;"/></div>'
 		card 	+=	'				<div class="w-100" style="padding: 12px;"></div>'
 		// RIGA NOME CLIENTE
-		card 	+=	'				<div class="col">'
-		card 	+=	'					<h5 id="' + id + 'CustomerName" class="card-title-' + i + '" style="color: var(--bs-heading-high-emphasis);">' + customerName.replace(/_/g, " ") + '</h5>'
-		card 	+=	'				</div>'
-		card 	+=	'				<div class="w-100" style="padding: 6px;"></div>'
-		card 	+=	'				<div class="col-7 align-self-center">'
+		//if(customerName == 'Lucano'|| customerName =='Canossa'){
+			card 	+=	'				<div class="col">'
+			card 	+=	'					<h5 id="' + id + 'CustomerName" class="card-title-' + i + '" style="color: var(--bs-heading-high-emphasis);">' + customerName[0,1] + '</h5>'
+			card 	+=	'				</div>'
+			card 	+=	'				<div class="w-100" style="padding: 6px;"></div>'
+			card 	+=	'				<div class="col-7 align-self-center">'
+		//}else{}
+	
 		// RIGA STATO CONNESSIONE
 		card 	+=	'					<h6 class="card-subtitle card-label-' + i + '" style="margin: 0px;color: var(--bs-heading-medium-emphasis);font-size: 14px;min-height: 20px;" translate_id="connection_status">Stato Connessione</h6>'
 		card 	+=	'				</div>'
@@ -127,7 +142,7 @@ function createCard(customerList){
 			// Aggiunge la card alla lista
 			$("#IDRowDisconnected").append(card)
 		}
-
+	
 		// Abilita onclick sulla card
 		document.getElementById(id).onclick = function(){
 			// salvo i dati nella local storage
@@ -136,6 +151,7 @@ function createCard(customerList){
 			// Carica la pagina.
 			window.location.href = "./02_Dashboard.html?entityName=" + el.name
 		}
+	}
 	})
 }
 
