@@ -67,17 +67,23 @@ function createCard(customerList){
 		// Recupera dall'entityName il nome del customerInfo
 		// Toglie le prime due stringhe 'Storci' e 'Thing'.
 		// es. EntityName: Storci.Thing.Antiche_Tradizioni_Di_Gragnano
-		let customerName = ['Customer 1', 'Customer 2']
-		switch(customerName){
-			case 0:
-				'cliente 1';
-				break;
+		let customerName = el.name.split('.')[2] //{1:'customer 1', 2: 'customer 2'}//['Customer 1', 'Customer 2']
+		/*switch(customerName){
 			case 1:
-				'cliente 2';
+				customerName = 'Customer 1';
 				break;
+			case 2:
+				customerName='Customer 2';
+				break;
+			default:
 
+		}*/
+		if (customerName =="Canossa"){
+			customerName = "Customer 1"
 		}
-		
+		else{
+			customerName = "Customer 2"
+		}
 		console.log(customerName)
 		// Recupera l'immagine del cliente
 		let image = "./assets/img/Loghi/" + customerName + "." + "svg"
@@ -93,7 +99,7 @@ function createCard(customerList){
 		// RIGA NOME CLIENTE
 		//if(customerName == 'Lucano'|| customerName =='Canossa'){
 			card 	+=	'				<div class="col">'
-			card 	+=	'					<h5 id="' + id + 'CustomerName" class="card-title-' + i + '" style="color: var(--bs-heading-high-emphasis);">' + customerName[0,1] + '</h5>'
+			card 	+=	'					<h5 id="' + id + 'CustomerName" class="card-title-' + i + '" style="color: var(--bs-heading-high-emphasis);">' + customerName + '</h5>'
 			card 	+=	'				</div>'
 			card 	+=	'				<div class="w-100" style="padding: 6px;"></div>'
 			card 	+=	'				<div class="col-7 align-self-center">'

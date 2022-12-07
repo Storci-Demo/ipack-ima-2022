@@ -36,6 +36,7 @@ $("body").ready(async function(){
 
 	// Recupera l'entity name della thing
 	let entityName = urlParams.get('entityName')
+	console.log(entityName)
 	// Recupera il nome del cliente
 	let selectedCustomer = localStorage.getItem("global_selected_customer")
 

@@ -186,6 +186,7 @@ function insertionSort(table, column, dir){
 // Funzione per recuperare i dati da tw per mettere nella tabella
 function getAlarmsNotifications(idTable, startDate, endDate, filter, getHistory, customerName){
 	customerName = customerName.replace(/_/g, ' ')
+	console.log(customerName)
 	tw.service_10_getAlerts(startDate, endDate, filter, getHistory,customerName)
 	.then((list)=>{
     setTimeout(function() {	$('#modal1').modal("hide") }, 500);
@@ -193,7 +194,8 @@ function getAlarmsNotifications(idTable, startDate, endDate, filter, getHistory,
 		list.rows.forEach((el,i) =>{
 			let timeStart = new Date(el.TimeStart).toLocaleString();
 			let timeEnd = new Date(el.TimeEnd).toLocaleString();
-
+			/*let customer = customerName
+			console.log(customer)*/
 			let color = 'rgba(255,255,255,0)'
 			let icon
 			let filter_type ="All"
@@ -214,7 +216,27 @@ function getAlarmsNotifications(idTable, startDate, endDate, filter, getHistory,
 				icon  = 'info'
 				filter_type = 'Message'
 			}
+			/*switch(customer){
+				case customer == "Lucano":
+					el.customerName = "customer 1";
+					break;
+				case customer == "Canossa":
+					el.customerName = "customer 2";
+					break; 
+				case customer == "Tria":
+					el.customerName = "customer 1";
+					break;
+				case customer == "Pasta e Aromi":
+					el.customerName = "customer 1";
+					break;
+				case customer == "Carazita":
+					el.customerName = "customer 1";
+					break;
+				default:
+					console.log('non esiste')
 
+
+			}*/
 			/****Lista generata */
 			let lista = '<li class="alert_list list-group-item mb-2 ' + filter_type + '"'
 			lista +='style="background: ' + color + '">'
@@ -224,7 +246,7 @@ function getAlarmsNotifications(idTable, startDate, endDate, filter, getHistory,
 			lista += '<span class="material-icons-outlined">'+icon+'</span>'
 			lista +='</div> '
 			lista +='<div class="row row-cols-2 row-cols-lg-4 w-100">'
-			lista +='<div class="mb-2"> '+ el.CustomerName.replace(/_/g, ' ') +'</div>'
+			lista +='<div class="mb-2"> '+ 'Customer' +'</div>'
 			lista +='<div class="mb-2"> '+ el.MachineName +'</div>'
 			lista +='<div class="mb-2">'+ timeStart +'</div>'
 			lista +='<div class="mb-2">'+ timeEnd +'</div>'

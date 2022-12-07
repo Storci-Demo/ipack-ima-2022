@@ -59,7 +59,7 @@ if(customer != "Storci"){
         // Controlla se sono presenti delle celle
         if(JSON.stringify(res.dryers) !== '[]'){
           // pagine
-          let href_dashboard         = '30_dryers_general_dashboard.html'
+          let href_dashboard         = '30_dryers_general_dashboard.html?entityName='+entityName
           let href_history           = '31_dryers_history.html'
           let href_customer_list     = '01_Customers.html'
           // id

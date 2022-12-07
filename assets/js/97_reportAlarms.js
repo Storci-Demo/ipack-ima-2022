@@ -149,6 +149,12 @@ function getAlertsReport(query){
                 customers.forEach(customer => {
                     const customerAlertCount = machineAlertCount.filter(el => el.CustomerName === customer)
                     const alarms = [...new Set(customerAlertCount.map(x => x.ID_AlertTable))]
+                   if(customer){
+                        customer = "Customer A"
+                    }
+                    else {
+                        customer = "Customer B"
+                        }
 
                     if(alarms.length > 0){
                         const idCustomerCollapse     = idCollapse + '-' + customer.replace(/ /g, '_')
