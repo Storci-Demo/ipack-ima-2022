@@ -175,7 +175,12 @@ function getAlarmsNotifications(filter, getHistory,customerName){
 				icon  = 'info'
 				filter_type = 'Message'
 			}
-
+			if(el.CustomerName == 'Canossa' || el.customerName == 'Lucano'){
+				el.CustomerName = "Customer 1"
+			}
+			else{
+				el.CustomerName = "Customer 2"
+			}
 			/****Lista generata */
 			let lista = '<li class="alert_list list-group-item mb-2 ' + filter_type + '"'
 			lista +='style="background: ' + color + '">'
@@ -185,7 +190,7 @@ function getAlarmsNotifications(filter, getHistory,customerName){
 			lista += '<span class="material-icons-outlined">'+icon+'</span>'
 			lista +='</div> '
 			lista +='<div class="row row-cols-2 row-cols-lg-3 w-100">'
-			lista +='<div class="mb-2"> '+ el.CustomerName.replace(/_/g, ' ') +'</div>'
+			lista +='<div class="mb-2"> '+ el.CustomerName +'</div>'
 			lista +='<div class="mb-2"> '+ el.MachineName +'</div>'
 			lista +='<div class="col-12 mb-2">'+ timeStart +'</div>'
 			//lista +='<div class="mb-2">'+ timeEnd +'</div>'

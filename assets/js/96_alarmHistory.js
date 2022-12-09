@@ -201,7 +201,7 @@ function getAlarmsNotifications(idTable, startDate, endDate, filter, getHistory,
 			let filter_type ="All"
 
 
-			if(el.Type== 'WRN'){
+			if(el.Type == 'WRN'){
 				color = "#fb8c0066"
 				icon = 'warning_amber'
 				filter_type = 'Warning'
@@ -211,32 +211,17 @@ function getAlarmsNotifications(idTable, startDate, endDate, filter, getHistory,
 				icon = 'error_outline'
 				filter_type = 'Alarm'
 			}
-			else if(el.Type =="MSG"){
+			else if(el.Type == "MSG"){
 				color = '#fdd83566'
 				icon  = 'info'
 				filter_type = 'Message'
 			}
-			/*switch(customer){
-				case customer == "Lucano":
-					el.customerName = "customer 1";
-					break;
-				case customer == "Canossa":
-					el.customerName = "customer 2";
-					break; 
-				case customer == "Tria":
-					el.customerName = "customer 1";
-					break;
-				case customer == "Pasta e Aromi":
-					el.customerName = "customer 1";
-					break;
-				case customer == "Carazita":
-					el.customerName = "customer 1";
-					break;
-				default:
-					console.log('non esiste')
-
-
-			}*/
+			if(el.CustomerName == 'Canossa' || el.customerName == 'Lucano'){
+				el.CustomerName = "Customer 1"
+			}
+			else{
+				el.CustomerName = "Customer 1"
+			}
 			/****Lista generata */
 			let lista = '<li class="alert_list list-group-item mb-2 ' + filter_type + '"'
 			lista +='style="background: ' + color + '">'
@@ -246,7 +231,7 @@ function getAlarmsNotifications(idTable, startDate, endDate, filter, getHistory,
 			lista += '<span class="material-icons-outlined">'+icon+'</span>'
 			lista +='</div> '
 			lista +='<div class="row row-cols-2 row-cols-lg-4 w-100">'
-			lista +='<div class="mb-2"> '+ 'Customer' +'</div>'
+			lista +='<div class="mb-2"> '+ el.CustomerName +'</div>'
 			lista +='<div class="mb-2"> '+ el.MachineName +'</div>'
 			lista +='<div class="mb-2">'+ timeStart +'</div>'
 			lista +='<div class="mb-2">'+ timeEnd +'</div>'
