@@ -149,26 +149,13 @@ function getAlertsReport(query){
                 customers.forEach(customer => {
                     const customerAlertCount = machineAlertCount.filter(el => el.CustomerName === customer)
                     const alarms = [...new Set(customerAlertCount.map(x => x.ID_AlertTable))]
-                  /* if(customer){
-                        customer = "Customer A"
+                  if(customer == "Lucano" && "Canossa"){
+                        customer = "Customer 1"
                     }
                     else {
-                        customer = "Customer B"
-                        }*/
-                     /*  switch(customer){
-                           case customer == 'Lucano':
-                            customer = 'customer 1';
-                            break;
-                            case customer == 'Canossa':
-                                customer = 'customer 2';
-                                break;
-                            case customer == 'Pasta e Aromi':
-                                customer = 'customer 3';
-                                break;
-                                default:
-                                    'no esiste';
-
-                        }*/
+                        customer = "Customer 2"
+                        }
+                
 
                     if(alarms.length > 0){
                         const idCustomerCollapse     = idCollapse + '-' + customer.replace(/ /g, '_')

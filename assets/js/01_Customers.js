@@ -94,7 +94,7 @@ function createCard(customerList){
 		card  +=	'	  <div id="' + id + '" class="card card-hover ripple h-100 card-border">'
 		card 	+=	'		<div class="card-body">'
 		card 	+=	'			<div class="row">'
-		card 	+=	'				<div class="col text-center"><img id="' + id + 'Image" src="' + image + '" alt="logo" onerror="' + onerror + '" style="opacity: 0.75;height: 75px;width: 200px;display:none;"/></div>'
+		card 	+=	'				<div class="col text-center"><img id="' + id + 'Image" src="' + image + '" alt="logo" onerror="' + onerror + '" style="opacity: 0.75;height: 75px;width: 200px;"/></div>'
 		card 	+=	'				<div class="w-100" style="padding: 12px;"></div>'
 		// RIGA NOME CLIENTE
 		//if(customerName == 'Lucano'|| customerName =='Canossa'){

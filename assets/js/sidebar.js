@@ -11,7 +11,7 @@ let entityName = localStorage.getItem('global_entityName')
 let customer = localStorage.getItem('global_selected_customer')
 try{
   customer = customer.replace(/_/g, ' ')
-  $('#id-customer-name').text(customer)
+  $('#id-customer-name').text("Storci Demo")
 }catch(e){}
 if(localStorage.getItem('global_customer').includes("Storci")){
   $('#id-nav-customers-list').removeClass('d-none')

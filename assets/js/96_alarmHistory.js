@@ -220,7 +220,7 @@ function getAlarmsNotifications(idTable, startDate, endDate, filter, getHistory,
 				el.CustomerName = "Customer 1"
 			}
 			else{
-				el.CustomerName = "Customer 1"
+				el.CustomerName = "Customer 2"
 			}
 			/****Lista generata */
 			let lista = '<li class="alert_list list-group-item mb-2 ' + filter_type + '"'
