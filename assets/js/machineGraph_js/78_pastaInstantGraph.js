@@ -48,3 +48,9 @@ query += 'WHERE time > {1}ms and time < {2}ms GROUP BY time(1m) fill(previous)'
 
 // ******************** GRAFICO PRODUZIONE ATTUALE ********************
 common.actualLineProduction(chartActualProduction, query, entityName)
+
+$('#backToPrev').click(function(){
+    //let url ='60_cellGrapHistory.html?'+'entityName='+ entityName  +'&timeStart=' + timeStartZoom  + '&timeEnd=' + timeEndZoom
+    let url ='../54_line_pasta_instant.html?'+'entityName='+ entityName  
+    window.open(url, '_blank')
+})

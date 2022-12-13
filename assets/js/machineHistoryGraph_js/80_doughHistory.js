@@ -55,3 +55,8 @@ query += 'WHERE time > '+ timeStartZoom + 'ms and time < '+ timeEndZoom + 'ms GR
 // ******************** STORICO PRODUZIONI ********************
 //common.historyLineProduction(chartHistoryProduction, query, entityName)
 common.actualLineProduction(chartHistoryProduction, query, entityName)
+$('#backToPrev').click(function(){
+    //let url ='60_cellGrapHistory.html?'+'entityName='+ entityName  +'&timeStart=' + timeStartZoom  + '&timeEnd=' + timeEndZoom
+    let url ='../45_line_dough.html?'+'entityName='+ entityName  
+    window.open(url, '_blank')
+})

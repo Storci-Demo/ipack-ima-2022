@@ -65,7 +65,11 @@ common.actualDryerProduction(chartHistoryProduction, query, entityName)
 
 
 
-
+$('#backToPrev').click(function(){
+    //let url ='60_cellGrapHistory.html?'+'entityName='+ entityName  +'&timeStart=' + timeStartZoom  + '&timeEnd=' + timeEndZoom
+    let url ='../60_dryers_history_zoom.html?'+'entityName='+ entityName  
+    window.open(url, '_blank')
+})
 
 // Istanzia i grafici dell'attuale e dello storico
 // I grafici devono essere istanziati una volta solamente

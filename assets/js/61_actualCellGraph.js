@@ -66,3 +66,8 @@ query += 'WHERE time > {1}ms and time < {2}ms GROUP BY time(10s) fill(previous)'
 common.actualDryerProduction(chartActualProduction, query, entityName)
 
 
+$('#backToPrev').click(function(){
+    //let url ='60_cellGrapHistory.html?'+'entityName='+ entityName  +'&timeStart=' + timeStartZoom  + '&timeEnd=' + timeEndZoom
+    let url ='../61_dryers_actual_zoom.html?'+'entityName='+ entityName  
+    window.open(url, '_blank')
+})
