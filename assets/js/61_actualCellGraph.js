@@ -68,6 +68,6 @@ common.actualDryerProduction(chartActualProduction, query, entityName)
 
 $('#backToPrev').click(function(){
     //let url ='60_cellGrapHistory.html?'+'entityName='+ entityName  +'&timeStart=' + timeStartZoom  + '&timeEnd=' + timeEndZoom
-    let url ='../61_dryers_actual_zoom.html?'+'entityName='+ entityName  
+    let url ='./32_dryer_dashboard.html?'+'entityName='+ entityName  
     window.open(url, '_blank')
 })

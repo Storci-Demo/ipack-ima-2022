@@ -4,6 +4,7 @@ import * as am from "./Global/amchart/amchart_functions.js"
 import * as fb from "./Global/Firebase/firebase_auth_module.js"
 import * as lang from "./Global/Common/Translation.js"
 import * as common from "./Global/Common/commonFunctions.js"
+//import * as dryers from ''
 
 // definisce l'url di base della pagina attuale (in questo caso della pagina index.html).
 // il risultato è http(s)://xxx.xxx.xxx.xxx:xxxx
@@ -67,7 +68,7 @@ common.actualDryerProduction(chartHistoryProduction, query, entityName)
 
 $('#backToPrev').click(function(){
     //let url ='60_cellGrapHistory.html?'+'entityName='+ entityName  +'&timeStart=' + timeStartZoom  + '&timeEnd=' + timeEndZoom
-    let url ='../60_dryers_history_zoom.html?'+'entityName='+ entityName  
+    let url ='./32_dryer_dashboard.html?'+'entityName='+ entityName  
     window.open(url, '_blank')
 })
 
